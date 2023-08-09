@@ -1,0 +1,1 @@
+# kartify-django-ecommerce
