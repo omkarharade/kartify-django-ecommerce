@@ -1,0 +1,12 @@
+.nav-link{
+    color : #2980b9;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 3rem;
+    display: inline-block;
+    position: relative;
+    font-size: 1rem;
+    font-weight:500;
+
+}
