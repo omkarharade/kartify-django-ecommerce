@@ -3,4 +3,34 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    /* background-image: url('../../../public/images/intro-img.jpg'), linear-gradient(#297fb9c6, #89c5ecc6); */
+
+    background-image: linear-gradient(
+        to right bottom,
+        rgba(41, 128, 185, 0.6),
+        rgba(41, 128, 185, 0.6)),
+    url('../../../public/images/intro-img.jpg');
+    background-size: cover;
+}
+
+.general-feature-icon{
+    color: #2980b9;
+    padding : 3rem;
+}
+
+.feature-card{
+    margin: 3rem auto;
+    border-radius: 10px;
+    max-width: 20rem;
+    background-color: rgb(237, 237, 237);
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.feature-card > h3{
+    margin: 0.5rem 0rem;
+}
+
+.feature-card > p {
+    padding: 0.5rem 0 2rem 0;
 }
