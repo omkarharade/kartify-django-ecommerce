@@ -25,9 +25,7 @@
 }
 
 .intro-image{
-    background-image: url("../../public/images/intro-img.jpg");
+    background-image: url("../../../public/images/intro-img.jpg");
     background-size: cover;
     min-width: 40%;
-
-    background-color: red;
 }
