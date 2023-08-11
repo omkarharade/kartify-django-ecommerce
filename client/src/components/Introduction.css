@@ -1,0 +1,33 @@
+.intro-div{
+    min-height: 70vh;
+    display: flex;
+    flex-direction: row;
+    margin: 1rem 0 0 0;
+}
+
+.intro-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 20rem;
+    max-width: 50%;
+    background-color: white;
+    padding: 3rem 5rem;
+}
+
+.intro-content > h1 {
+    margin: 0 0 2rem 0;
+}
+
+.intro-content > p {
+    font-weight: 500;
+}
+
+.intro-image{
+    background-image: url("../../public/images/intro-img.jpg");
+    background-size: cover;
+    min-width: 40%;
+
+    background-color: red;
+}

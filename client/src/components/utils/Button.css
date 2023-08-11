@@ -1,0 +1,26 @@
+.btn, .btn:link, .btn:visited {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 3rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all .2s;
+    position: relative;
+    font-size: 0.8rem;
+    border: none;
+    cursor: pointer;
+}
+
+.login-btn{
+    margin: 0 2rem;
+    font-weight: 500;
+    color: white;
+    background-color: #2980b9;
+}
+
+.signup-btn{
+    font-weight: 500;
+    color: #2980b9;
+    border: 3px solid #2980b9;
+}
