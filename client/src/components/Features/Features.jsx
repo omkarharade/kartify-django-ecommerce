@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import "./Features.css";
 
-import { faStar, faTruck, faCheckToSlot, faLight } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faTruck, faCheckToSlot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 
 export class Features extends Component {
@@ -18,6 +19,7 @@ export class Features extends Component {
                         <p className='tertiary-text-p'>Products are checked and sold by verified sellers</p>
                     </div>
 
+                   
                     <div className="feature-card ">
                         <FontAwesomeIcon className="general-feature-icon" icon={faTruck} iconStyle="light" size='6x'/>
                         <h3>Fast Delivery</h3>
