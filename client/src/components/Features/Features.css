@@ -18,6 +18,11 @@
     padding : 3rem;
 }
 
+.general-feature-icon:hover{
+    color: #1E3050;
+    font-size: 7rem;
+}
+
 .feature-card{
     margin: 3rem auto;
     border-radius: 10px;

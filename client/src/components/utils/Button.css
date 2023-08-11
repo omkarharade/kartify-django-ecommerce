@@ -12,6 +12,7 @@
     cursor: pointer;
 }
 
+
 .login-btn{
     margin: 0 2rem;
     font-weight: 500;
@@ -19,8 +20,18 @@
     background-color: #2980b9;
 }
 
+.login-btn:hover{
+    background-color: #1E3050;
+}
+
+
 .signup-btn{
     font-weight: 500;
     color: #2980b9;
     border: 3px solid #2980b9;
+}
+.signup-btn:hover{
+    color: white;
+    background-color: #2980b9;
+    border-color: #1E3050;
 }
