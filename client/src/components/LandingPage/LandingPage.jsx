@@ -15,8 +15,8 @@ export class LandingPage extends Component {
     return (
       <>
         <Navbar />
-        <Signup/>
-        <Login/>
+        {/* <Signup/> */}
+        {/* <Login/> */}
         <Introduction/>
         <Features/>
         <Footer/>
