@@ -1,4 +1,6 @@
 from django.db import models
+import random
+import string
 
 # Create your models here.
 class Products(models.Model):
@@ -10,5 +12,10 @@ class Products(models.Model):
     stock_quantity = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now =True)
+
+    def save(self, *args, **kwargs):
+            self.product_id = "PR"+"".join(random.choices(string.digits, k=8))
+            super().save(*args, **kwargs)
+ 
 
 
