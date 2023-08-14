@@ -1,18 +1,24 @@
 import React, { Component } from 'react'
 import './Introduction.css';
 
+import { 
+            introContentMain,
+            introContentSub,
+
+} from '../../asset/constants/landingPageConstants';
+
 export class Introduction extends Component {
     render() {
         return (
             <>
                 <div className="intro-div">
                     <div className="intro-content">
-                        <h1> Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores voluptates modi maiores ea  </h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente provident expedita amet deserunt voluptatibus perspiciatis labore inventore delectus. Officiis cum animi</p>
+                        <h1 className="h1-main"> {introContentMain}</h1>
+                        <p className="p-main">{introContentSub}</p>
                     </div>
 
                     <div className="intro-image">
-
+                        // image come here as background using css
                     </div>
                 </div>
             </>
