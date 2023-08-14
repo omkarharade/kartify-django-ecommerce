@@ -1,39 +1,37 @@
 import React, { Component } from 'react'
 import "./Features.css";
-
-import { faStar, faTruck, faCheckToSlot, faLight } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import FeatureCard from './FeatureCard';
+import featuresData from './featureData';
 
 
 export class Features extends Component {
-    render() {
+
+    render() 
+        {
+            let features = [];
+
+            for(let i = 0; i < featuresData.length; i++){
+            
+            const feat = featuresData[i];
+
+            features.push(
+                <
+                    FeatureCard
+                    key={i}
+                    featureName = {feat.featureName}
+                    featureDesc = {feat.featureDesc}
+                    iconName = {feat.iconName}
+                    iconStyle = {feat.iconStyle}
+                    size = {feat.size}
+                />
+            )
+        }
+
         return (
-            <>
-                <div className="features-div">
-
-                    
-                    <div className="feature-card ">
-                        <FontAwesomeIcon className="general-feature-icon" icon={faCheckToSlot} iconStyle="light" size='6x' />
-                        <h3>Verified Products</h3>
-                        <p className='tertiary-text-p'>Products are checked and sold by verified sellers</p>
-                    </div>
-
-                    <div className="feature-card ">
-                        <FontAwesomeIcon className="general-feature-icon" icon={faTruck} iconStyle="light" size='6x'/>
-                        <h3>Fast Delivery</h3>
-                        <p className='tertiary-text-p'>Products delivered at your doorstep safely and quickly</p>
-                    </div>
-
-                    <div className="feature-card ">
-                        <FontAwesomeIcon className="general-feature-icon" icon={faStar} iconStyle="light"size='6x'/>
-                        <h3>Excellent Ratings</h3>
-                        <p className='tertiary-text-p'>Our success lies in happy and satisfied customers</p>
-                    </div>
-                </div>
-
-            </>
+            {features}
         )
     }
 }
+
 
 export default Features
