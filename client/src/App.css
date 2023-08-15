@@ -8,6 +8,10 @@
 
 }
 
+html {
+  font-size: 80%;
+}
+
 :root {
   --primary-blue: #2980b9
 }
