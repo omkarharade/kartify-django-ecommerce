@@ -1,0 +1,53 @@
+/* ------ nav bar ---------- */
+
+h1{
+    font-size: 5rem;
+}
+
+h2{
+
+}
+
+h3{
+    font-size: 2.5rem;
+}
+
+p{
+    font-size: 1.8rem;
+}
+
+.h1-logo{
+    font-size: 4rem;
+}
+.a-nav-link{
+    font-size: 1.5rem;
+    font-weight:500;
+}
+
+.button-text-nav{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.h1-main{
+    font-size: 5rem;
+}
+
+.h2-main{
+
+}
+
+.h3-main{
+    font-size: 2.5rem;
+}
+
+.p-main{
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.p-footer{
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+

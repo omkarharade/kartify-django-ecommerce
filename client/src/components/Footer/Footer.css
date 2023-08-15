@@ -9,6 +9,7 @@
 
 .footer-social-icons{
     color: white;
+    margin: 2rem;
     padding: 2rem;
 }
 
@@ -18,4 +19,5 @@
 
 .footer-credits{
     color: white;
+    padding: 0 0 2rem 0;
 }

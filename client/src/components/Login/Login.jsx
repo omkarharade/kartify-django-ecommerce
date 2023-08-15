@@ -25,7 +25,7 @@ export class Login extends Component {
             </div>
 
             <div className="input-field">
-              <Button className="enter-credentials-btn" name="Sign Up" />
+              <Button className="w-75 enter-credentials-btn" name="Sign Up" />
             </div>
 
           </div>

@@ -8,15 +8,12 @@ import Login from '../Login/Login'
 
 export class LandingPage extends Component {
 
-
 // functions 
 
   render() {
     return (
       <>
         <Navbar />
-        <Signup/>
-        <Login/>
         <Introduction/>
         <Features/>
         <Footer/>

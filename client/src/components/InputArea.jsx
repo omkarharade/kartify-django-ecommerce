@@ -5,7 +5,8 @@ export class InputArea extends Component {
   render() {
     return (
       <>
-        <input class = "input-area" type='text' />
+        <input class = "input-area" type='text' 
+        value={this.props.value}/>
       </>
     )
   }
