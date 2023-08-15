@@ -1,0 +1,17 @@
+.feature-card{
+    margin: 3rem auto;
+    border-radius: 10px;
+    max-width: 30rem;
+    background-color: var(--primary-white);
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.feature-card > h3{
+    margin: 2rem 0rem;
+
+}
+
+.feature-card > p {
+    padding: 2rem 0 3.5rem 0;
+}

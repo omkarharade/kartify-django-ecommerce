@@ -6,7 +6,7 @@ class Navlink extends React.Component {
     render() {
 
         return <>
-            <a className='nav-link'>{this.props.linkName}</a>
+            <a className='nav-link a-nav-link'>{this.props.linkName}</a>
         </>
     }
 }

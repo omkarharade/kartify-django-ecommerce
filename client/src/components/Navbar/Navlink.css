@@ -1,17 +1,14 @@
 .nav-link{
-    color : #2980b9;
+    color : var(--primary-blue);
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 1rem 3rem;
+    padding: 2rem 4rem;
     display: inline-block;
     position: relative;
-    font-size: 1rem;
-    font-weight:500;
-
 }
 
 .nav-link:hover{
-    color: #1E3050;
-    border-bottom: 3px solid #1E3050;
+    color: var(--primary-blue-dark);
+    border-bottom: 3px solid var(--primary-blue-dark);
 }

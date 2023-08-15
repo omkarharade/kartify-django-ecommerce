@@ -9,33 +9,16 @@
         to right bottom,
         rgba(41, 128, 185, 0.6),
         rgba(41, 128, 185, 0.6)),
-    url('../../../public/images/intro-img.jpg');
+    url('../../asset/images/intro-img.jpg');
     background-size: cover;
 }
 
 .general-feature-icon{
-    color: #2980b9;
+    color: var(--primary-blue);
     padding : 3rem;
 }
 
 .general-feature-icon:hover{
-    color: #1E3050;
+    color: var(--primary-blue-dark);
     font-size: 7rem;
-}
-
-.feature-card{
-    margin: 3rem auto;
-    border-radius: 10px;
-    max-width: 20rem;
-    background-color: rgb(237, 237, 237);
-    text-align: center;
-    padding: 0 2rem;
-}
-
-.feature-card > h3{
-    margin: 0.5rem 0rem;
-}
-
-.feature-card > p {
-    padding: 0.5rem 0 2rem 0;
 }
