@@ -8,7 +8,6 @@ import './Navbar.css';
 import './Navlink.css';
 import Login from '../Login/Login.jsx';
 import Signup from '../Signup/Signup.jsx';
-import LandingPage from '../LandingPage/LandingPage.jsx';
 
 
 class Navbar extends React.Component {
