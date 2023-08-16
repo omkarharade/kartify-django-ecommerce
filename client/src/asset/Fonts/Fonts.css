@@ -5,7 +5,7 @@ h1{
 }
 
 h2{
-
+    font-size: 3.5rem;
 }
 
 h3{
@@ -13,6 +13,14 @@ h3{
 }
 
 p{
+    font-size: 1.6rem;
+}
+
+label{
+    font-size: 1.6rem;
+}
+
+input{
     font-size: 1.8rem;
 }
 
@@ -49,5 +57,9 @@ p{
 .p-footer{
     font-size: 1.8rem;
     font-weight: 400;
+}
+
+.p-error{
+    font-size: 1rem;
 }
 

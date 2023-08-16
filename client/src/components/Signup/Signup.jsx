@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import './Signup.css';
 import InputArea from '../InputArea';
 import Button from '../utils/Button';
-import { Link } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
+import Login from '../Login/Login';
 
 export class Signup extends Component {
 
@@ -177,12 +178,16 @@ export class Signup extends Component {
 
                     <div className="input-header">
                         <h2>Signup </h2>
-                        <p>or <span>login to your account</span></p>
+                        <p>or <Link to = '/login' className='blue-highlight'> login to your account</Link></p>
                     </div>
+
+                        <Routes>
+                            <Route  path="/login" element={<Login />} />
+                        </Routes>
 
 
                     <div className="input-field">
-                        <label>{firstName}</label>
+                        <label>First Name</label>
                         <InputArea type={"text"} inputValue={firstName} onInputChange={this.handleFirstNameInputChange} />
                         <p style={{ color: 'red' }}>{firstNameValError}</p>
                     </div>

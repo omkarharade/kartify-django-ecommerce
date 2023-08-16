@@ -1,7 +1,8 @@
 import "./App.css";
 import React from "react";
 import "./asset/Fonts/Fonts.css";
-import LandingPage from "./components/LandingPage/LandingPage";
+import LandingPage from "./components/Pages/LandingPage";
+import './asset/BasicStyles.css';
 
 // importing color variables
 import "./asset/variables/colorVariables.css";

@@ -13,8 +13,8 @@ export class Introduction extends Component {
             <>
                 <div className="intro-div">
                     <div className="intro-content">
-                        <h1 className="h1-main"> {introContentMain}</h1>
-                        <p className="p-main">{introContentSub}</p>
+                        <h1 className=" margin-td h1-main"> {introContentMain}</h1>
+                        <p className="margin-td-4 p-main">{introContentSub}</p>
                     </div>
 
                     <div className="intro-image">
