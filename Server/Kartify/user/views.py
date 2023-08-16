@@ -67,7 +67,7 @@ class LoginUser(APIView):
             #     else:
             #         return JsonResponse({"message": "Invalid credentials."}, status=401)
             # except Buyers.DoesNotExist:
-            #     return JsonResponse({"message": "User not found"},status=404)          
+            #     return JsonResponse({"message": "User n   ot found"},status=404)          
 
             user = authenticate(request=request, username=username, password=password)
 
