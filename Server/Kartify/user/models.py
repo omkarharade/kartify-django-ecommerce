@@ -15,8 +15,8 @@ class Buyers(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now =True)
     
-    # def save(self, *args, **kwargs):
-    #         self.buyer_id = "BR"+"".join(random.choices(string.digits, k=8))
-    #         super().save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+            self.buyer_id = "BR"+"".join(random.choices(string.digits, k=8))
+            super().save(*args, **kwargs)
  
 

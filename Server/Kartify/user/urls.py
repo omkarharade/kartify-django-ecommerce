@@ -1,4 +1,3 @@
-from django.contrib import admin
 from django.urls import path, include
 # from user.views import BuyerViewSet
 from . import views
@@ -11,8 +10,9 @@ router.register(r'buyer', views.BuyerViewSet)
 urlpatterns = [
 
     path('',include(router.urls)),
-    path('list', views.list_buyers),
-    path('add', views.add_buyer),
-    path('login', views.LoginAPI.as_view()),
+    path('list', views.ListBuyers.as_view()),
+    path('register', views.RegisterUser.as_view()),
+    path('login', views.LoginUser.as_view()),
+    path('login2', views.LoginAPI.as_view()),
 
 ]
