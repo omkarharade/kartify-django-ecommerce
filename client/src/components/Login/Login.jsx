@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import './Login.css';
 import InputArea from '../InputArea';
 import Button from '../utils/Button';
+import { Link } from 'react-router-dom';
 
 export class Login extends Component {
   render() {
     return (
       <>
-        <div className="fixed-transparent-div">
+        <Link to="/"  className="fixed-transparent-div">
           <div className="login-div sliding-div">
             <div className="input-header">
               <h2>Login </h2>
@@ -30,7 +31,7 @@ export class Login extends Component {
 
           </div>
 
-        </div>
+        </Link>
       </>
     )
   }

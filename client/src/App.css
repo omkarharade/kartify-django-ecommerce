@@ -8,10 +8,12 @@
 
 }
 
-
-
-html{
+html {
   font-size: 62.5%;
+}
+
+:root {
+  --primary-blue: #2980b9
 }
 
 body{

@@ -6,11 +6,13 @@ import Footer from '../Footer/Footer'
 import Signup from '../Signup/Signup'
 import Login from '../Login/Login'
 
-export class LandingPage extends Component {
 
+export class LandingPage extends Component {
+  
 // functions 
 
   render() {
+    
     return (
       <>
         <Navbar />
