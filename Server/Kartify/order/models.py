@@ -1,4 +1,6 @@
 from django.db import models
+import string
+import random
 
 # Create your models here.
 class Orders(models.Model):
@@ -9,6 +11,10 @@ class Orders(models.Model):
     total = models.DecimalField(max_digits=10, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now =True)
+
+    def save(self, *args, **kwargs):
+            self.order_id = "OR"+"".join(random.choices(string.digits, k=8))
+            super().save(*args, **kwargs)
 
 
 

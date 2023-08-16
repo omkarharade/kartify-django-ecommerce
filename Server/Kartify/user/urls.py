@@ -8,12 +8,11 @@ router = routers.DefaultRouter()
 router.register(r'buyer', views.BuyerViewSet)
 
 
-
-
 urlpatterns = [
 
     path('',include(router.urls)),
     path('list', views.list_buyers),
     path('add', views.add_buyer),
+    path('login', views.LoginAPI.as_view()),
 
 ]
