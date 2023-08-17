@@ -32,6 +32,7 @@ export class Signup extends Component {
         this.handlePasswordInputChange = this.handlePasswordInputChange.bind(this);
         this.handleContactInputChange = this.handleContactInputChange.bind(this);
         this.handleAddressInputChange = this.handleAddressInputChange.bind(this);
+        this.onSignup = this.onSignup.bind(this);
     }
 
     _alphaCheck(input) {
@@ -40,12 +41,47 @@ export class Signup extends Component {
         else return false;
     }
 
+    _validateName(name){
+        if (this._alphaCheck(name) && (name.length <= 10) || name === "") return true;
+        else return false;
+    }
+
+    _validateEmail(email){
+        let regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+
+        if(regex.test(email) || email === "")  return true;
+        else return false;
+    }
+
+    _validatePassword(password){
+        let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/
+
+        if(regex.test(password))return true;
+        else return false;
+    }
+
+    _validateContact(contact){
+        let regex = /^[1-9]{1}[0-9]{9}$/;
+
+        if(regex.test(contact))return true;
+        else return false;
+
+    }
+
+    _validateAddress(address){
+        if(address === ""){
+            return true;
+        }
+        else return false;
+    }
+
     handleFirstNameInputChange(firstName) {
+        
         this.setState({
             firstNameInput: firstName
         })
 
-        if (this._alphaCheck(firstName) && (firstName.length <= 10) || firstName === "") {
+        if (this._validateName(firstName)) {
 
             this.setState({
                 firstNameValError: "",
@@ -66,7 +102,7 @@ export class Signup extends Component {
             lastNameInput: lastName
         })
 
-        if (this._alphaCheck(lastName) && (lastName.length <= 10)) {
+        if (this._validateName(lastName)) {
 
             this.setState({
                 lastNameValError: "",
@@ -87,9 +123,7 @@ export class Signup extends Component {
             emailInput: email
         })
 
-        let regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-
-        if(regex.test(email)){
+        if(this._validateEmail(email)){
             this.setState({
                 emailValError: "",
             });
@@ -106,9 +140,7 @@ export class Signup extends Component {
             passwordInput: password
         })
 
-        let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/
-
-        if(regex.test(password)){
+        if(this._validatePassword(password)){
             this.setState({
                 passwordValError: ""
             })
@@ -121,13 +153,21 @@ export class Signup extends Component {
     }
 
     handleContactInputChange(contact) {
-        this.setState({
-            contactInput: contact
-        })
+        let alphaRegex = /^[A-Za-z]+$/;
 
-        let regex = /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/;
+        if(alphaRegex.test(contact)){
+            this.setState({
+                contactInput : "",
+            })
+            return;
+        }
+        else{
+            this.setState({
+                contactInput: contact
+            })
+        }
 
-        if(regex.test(contact)){
+        if(this._validateContact(contact)){
             this.setState({
                 contactValError: "",
             })
@@ -144,11 +184,37 @@ export class Signup extends Component {
             addressInput: address
         })
 
-        if(address === ""){
+        if(this._validateAddress(address)){
             this.setState({
                 addressValError: "enter valid address",
             })
         }
+        else{
+            this.setState({
+                addressValError: "",
+            });
+        }
+    }
+
+
+
+    onSignup(){
+
+        // if(
+        //     !this._validateName(this.state.firstNameInput) ||
+        //     !this._validateName(this.state.lastNameInput) ||
+        //     !this._validateAddress(this.state.emailInput) ||
+        //     !this.state._validatePassword(this.state.passwordInput) ||
+        //     !this._validateContact(this.state.contactInput) || 
+        //     !this._validateAddress(this.state.addressInput)
+        // ){
+
+        // }
+        // else{
+            
+        // }
+
+        console.log("function clicked");
     }
 
 
@@ -224,7 +290,7 @@ export class Signup extends Component {
                     </div>
 
                     <div className="input-field">
-                        <Button className="enter-credentials-btn" name="Sign Up" />
+                        <Button onSubmit = {this.onSignup} className="enter-credentials-btn" name="Sign Up" />
                     </div>
 
                 </div>

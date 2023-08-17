@@ -1,4 +1,4 @@
-.intro-div{
+.intro-div {
     min-height: 80vh;
     display: flex;
     flex-direction: row;
@@ -11,7 +11,7 @@
     }
 }
 
-.intro-content{
+.intro-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -30,7 +30,7 @@
 }
 
 
-.intro-image{
+.intro-image {
     background-image: url("../../asset/images/intro-img.jpg");
     background-size: cover;
     min-width: 50%;
@@ -39,8 +39,7 @@
     @media (max-width: 1100px) {
         /* Styles for small screens */
         flex-direction: column;
-        min-width: 60rem;
         width: 90%;
-        min-height: 60rem;   
+        min-height: 60rem;
     }
 }

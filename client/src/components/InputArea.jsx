@@ -15,7 +15,7 @@ export class InputArea extends Component {
   render() {
     return (
       <>
-        <input className = "input-area" type={this.props.type} value={this.props.value} onChange={this.handleChange}/>
+        <input className = "input-area" type={this.props.type} value={this.props.inputValue} onChange={this.handleChange}/>
 
         <script>
 

@@ -13,11 +13,9 @@ import {
 	faTruck,
 	faCheckToSlot,
 	faStar,
+	faBars
 } from "@fortawesome/free-solid-svg-icons";
-import { Route, Routes } from "react-router-dom";
-import Login from "./components/Login/Login";
-import Signup from "./components/Signup/Signup";
-library.add(faTruck, faCheckToSlot, faStar);
+library.add(faTruck, faCheckToSlot, faStar, faBars);
 
 class App extends React.Component {
 	render() {

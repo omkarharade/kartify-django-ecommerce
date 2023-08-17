@@ -12,6 +12,13 @@
 }
 
 
+
+.enter-credentials-btn{
+    width:75%;
+    border: 2px solid #2980b9;
+    margin:1rem 0;
+}
+
 .login-btn{
     margin: 0 2rem;
     font-weight: 500;
@@ -37,8 +44,9 @@
     border-color: #1E3050;
 }
 
-.enter-credentials-btn{
-    width:75%;
-    border: 2px solid #2980b9;
-    margin:1rem 0;
+@media screen and (max-width: 800px) {
+
+    .login-btn .signup-btn{
+        margin: 2rem 0;
+    }
 }
