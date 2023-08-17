@@ -8,7 +8,7 @@ from django.http import JsonResponse
 from .serializers import *
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.tokens import AccessToken
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 
@@ -51,61 +51,34 @@ class LoginUser(APIView):
     def post(self, request):
         try:
             username = request.data.get('username')
-            password = request.data.get('password')
+            password = request.data.get('password')           
 
             if username is None or password is None:
                 return JsonResponse({"error": "Please provide both username and password"}, status=400)
+            
+            # try:
+            #     buyer = Buyers.objects.get(email=username)
+            #     if buyer.email == username and buyer.password==password:
+            #         print("corrct")
+            #         access= AccessToken.for_user(buyer)
+            #         print("a")
+            #         return JsonResponse({"message": "Login successful", 
+            #                             "access": str(access)}, status=200)
+            #     else:
+            #         return JsonResponse({"message": "Invalid credentials."}, status=401)
+            # except Buyers.DoesNotExist:
+            #     return JsonResponse({"message": "User n   ot found"},status=404)          
 
             user = authenticate(request=request, username=username, password=password)
-            
+
             if user is not None:
-                return JsonResponse({"message": "Login successful"}, status=200)
+                access= AccessToken.for_user(user)
+                # refresh = RefreshToken.for_user(user)
+                return JsonResponse({"message": "Login successful", 
+                                     "access": str(access)}, status=200)
             else:
-                return JsonResponse({"message": "Login failed"}, status=401)
+                return JsonResponse({"message": "Invalid credentials."}, status=401)
         except Exception as error:
             print(error)
             return JsonResponse({"error": str(error)},status=500)
-
-
-class LoginAPI(APIView):
-    # authentication_classes = [JWTAuthentication]
-    # permission_classes = [IsAuthenticated]
-
-    def get(self, request):
-        buyers = Buyers.objects.all()
-        serializer = BuyerSerializer(buyers, many=True)
-        return Response(serializer.data)
-
-    def post(self, request):
-        try:
-            data =request.data
-            print("data", data)
-            serializer = LoginSerializer(data = data)
-            if serializer.is_valid():
-                print('In serializer', serializer.data.get('email'))
-                print('In serializer', serializer.data['email'])
-                email= data['email']
-                password = data['password']
-
-                user = authenticate(email=email, password=password)
-                print(user)
-                if user is None:
-                    return Response({'status':400, 
-                             'message' : 'Invalid Credentials', 
-                             'data': {}})
-
-                refresh = RefreshToken.for_user(user)
-                return Response({
-                    'refresh': str(refresh),
-                    'access': str(refresh.access_token),
-                    })
-            
-            return Response({'status':400, 
-                             'message' : 'Something went wrong', 
-                             'data': serializer.errors})
-        
-        except Exception as error:
-            print(error)
-            return JsonResponse({"error": str(error)},status=500)
-
 
