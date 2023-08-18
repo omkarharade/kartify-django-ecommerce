@@ -10,7 +10,6 @@ export class InputArea extends Component {
 
   handleChange(e) {
     this.props.onInputChange(e.target.value);
-    console.log(this.props)
   }
   render() {
     return (

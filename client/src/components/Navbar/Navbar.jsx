@@ -17,7 +17,15 @@ class Navbar extends React.Component {
         super(props);
         this.state = {
             isNavExpanded: false,
+            isLoggedIn: localStorage.getItem('isLoggedIn') === 'true',
         }
+        this.onLogout = this.onLogout.bind(this);
+    }
+
+    onLogout(){
+        console.log("clicked logout")
+        localStorage.setItem('isLoggedIn', 'false');
+        window.location.href = '/';
     }
     render() {
         const isNavExpanded = this.state.isNavExpanded;
@@ -29,14 +37,28 @@ class Navbar extends React.Component {
                 </div>
                 <div className={`flex-container ${isNavExpanded ? "nav-expanded" : ""}`}>
 
-                    <Link to="/login">
-                        <Button className="login-btn button-text-nav" name="Login" />
-                    </Link>
+                {
+                    (localStorage.getItem('isLoggedIn') === "false") ? 
 
+                        <>
+                        <Link to="/login">
+                            <Button className="login-btn button-text-nav" name="Login" />
+                        </Link>
+    
+    
+                        <Link to='/signup'>
+                            <Button className="signup-btn button-text-nav" name="Sign Up" />
+                        </Link>
+                        </>
+                    :
+                        <>
+                            <Link onClick={this.onLogout}>
+                                <Button className="signup-btn" name="Logout"/>
+                            </Link>
+                        </>
+    
+                }
 
-                    <Link to='/signup'>
-                        <Button className="signup-btn button-text-nav" name="Sign Up" />
-                    </Link>
 
                     <Navlink linkName="Contact Us" />
                     <Navlink linkName="Menu" />

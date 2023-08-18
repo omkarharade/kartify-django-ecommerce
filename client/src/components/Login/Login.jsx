@@ -5,27 +5,34 @@ import Button from '../utils/Button';
 import { Link, Route, Routes } from 'react-router-dom';
 import Signup from '../Signup/Signup';
 import {Navigate} from "react-router-dom";
+import axios from "axios";
 
 export class Login extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       emailInput: '',
       passwordInput: '',
       isLoggedIn: localStorage.getItem('isLoggedIn') === 'true',
-
       emailValError: '',
       passwordValError: '',
+      accessToken: localStorage.getItem('accessToken')
     }
 
     this.handleEmailInputChange = this.handleEmailInputChange.bind(this);
     this.handlePasswordInputChange = this.handlePasswordInputChange.bind(this);
     this.handleEmailInputChange = this.handleEmailInputChange.bind(this);
     this.handlePasswordInputChange = this.handlePasswordInputChange.bind(this);
-  }
+    this.onLogin = this.onLogin.bind(this);
 
+}
+componentDidMount(){
+  console.log("state",this.state.emailInput)
+}
   _validate_email(email){
+    console.log("this.state.emailInput",this.state.emailInput);
     let regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
     if (regex.test(email)) {
@@ -76,13 +83,38 @@ export class Login extends Component {
     }
   }
 
-  onLogin({email, password}){
+
+
+  
+  onLogin(){
     
-    if(this._validate_email(email) && 
-      (this._validate_password(password))
+    const {
+      emailInput,
+      passwordInput
+    } = this.state;
+
+
+
+    const data = {
+      email: emailInput,
+      password: passwordInput
+    }
+
+
+    if(this._validate_email(data.email) && 
+      (this._validate_password(data.password))
     ){
-      this.setState({isLoggedIn: true});
-      localStorage.setItem('isLoggedIn', 'true')
+
+      axios.post('http://127.0.0.1:8000/user/login', data)
+            .then(response => {
+                console.log("data submitted successfully", response.data);
+                this.setState({isLoggedIn: true});
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('accessToken', data.access);
+            })
+            .catch(error => {
+                console.log('Error submitting the data', error);
+            })
     }
   }
 
@@ -92,7 +124,6 @@ export class Login extends Component {
     const password = this.state.passwordInput;
     const emailValError = this.state.emailValError;
     const passwordValError = this.state.passwordValError;
-
 
     if(this.state.isLoggedIn){
       return <Navigate to="/menu" />
@@ -126,7 +157,7 @@ export class Login extends Component {
             <p style={{ color: 'red' }}>{passwordValError}</p>
           </div>
 
-          <div onClick={() => {this.onLogin({email, password})}} className="input-field">
+          <div onClick={this.onLogin} className="input-field">
             <Button className="w-75 enter-credentials-btn" name="Login" />
           </div>
 

@@ -4,7 +4,8 @@ import InputArea from '../InputArea';
 import Button from '../utils/Button';
 import { Link, Route, Routes } from 'react-router-dom';
 import Login from '../Login/Login';
-import {Redirect} from 'react-router-dom';
+import {Navigate} from 'react-router-dom';
+import axios from "axios";
 
 export class Signup extends Component {
 
@@ -24,7 +25,9 @@ export class Signup extends Component {
             emailValError: '',
             passwordValError: '',
             contactValError: '',
-            addressValError: ''
+            addressValError: '',
+
+            isLoggedIn: localStorage.getItem('isLoggedIn') === 'true',
         }
 
         this.handleFirstNameInputChange = this.handleFirstNameInputChange.bind(this);
@@ -87,7 +90,6 @@ export class Signup extends Component {
             this.setState({
                 firstNameValError: "",
             });
-
         }
         else {
 
@@ -201,22 +203,49 @@ export class Signup extends Component {
 
     onSignup(){
 
-        if(
-            (!this._validateName(this.state.firstNameInput) ||
-            !this._validateName(this.state.lastNameInput) ||
-            !this._validateAddress(this.state.emailInput) ||
-            !this.state._validatePassword(this.state.passwordInput) ||
-            !this._validateContact(this.state.contactInput) || 
-            !this._validateAddress(this.state.addressInput)
-            )
-        ){
-            
-        }
-        else{
-            
+        const {
+            firstNameInput,
+            lastNameInput,
+            emailInput,
+            passwordInput,
+            contactInput,
+            addressInput
+
+        } = this.state;
+
+
+        const data = {
+            first_name: firstNameInput,
+            last_name: lastNameInput,
+            email: emailInput,
+            password: passwordInput,
+            contact_no: contactInput,
+            address: addressInput
         }
 
-        console.log("function clicked");
+        if(
+            (!this._validateName(data.first_name) ||
+            !this._validateName(data.last_name) ||
+            !this._validateAddress(data.email) ||
+            !this.state._validatePassword(data.password) ||
+            !this._validateContact(data.contact_no) || 
+            !this._validateAddress(data.address)
+            )
+        ){
+            axios.post('http://127.0.0.1:8000/user/register', data)
+            .then(response => {
+                console.log("data submitted successfully", response.data);
+                this.setState({isLoggedIn: true});
+                localStorage.setItem('isLoggedIn', 'true');
+            })
+            .catch(error => {
+                console.log('Error submitting the data', error);
+            })
+        }
+        else{
+            console.error("invalid input fields");
+            
+        }
     }
 
 
@@ -235,6 +264,9 @@ export class Signup extends Component {
         const contactValError = this.state.contactValError;
         const addressValError = this.state.addressValError;
 
+        if(this.state.isLoggedIn){
+            return <Navigate to="/menu" />
+        }
 
         return (
             <>

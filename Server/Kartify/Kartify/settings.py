@@ -90,7 +90,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'kartify',
         'USER' : 'postgres',
-        'PASSWORD' : 'Data@123',
+        'PASSWORD' : '13102001',
         'HOST' : 'localhost'
     }
 }

@@ -1,0 +1,10 @@
+.item-image{
+    height:10rem;
+    width: 10rem;
+}
+
+.menu-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
