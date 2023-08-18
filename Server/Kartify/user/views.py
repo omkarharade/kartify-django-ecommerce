@@ -8,10 +8,15 @@ from django.http import JsonResponse
 from .serializers import *
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework_simplejwt.tokens import AccessToken
+from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 
+
+
+
+# from django.contrib.auth import get_user_model
+# User = get_user_model()
 
 # Create your views here.
 class BuyerViewSet(viewsets.ModelViewSet):
@@ -67,12 +72,13 @@ class LoginUser(APIView):
             #     else:
             #         return JsonResponse({"message": "Invalid credentials."}, status=401)
             # except Buyers.DoesNotExist:
-            #     return JsonResponse({"message": "User n   ot found"},status=404)          
+            #     return JsonResponse({"message": "User not found"},status=404)          
 
             user = authenticate(request=request, username=username, password=password)
 
             if user is not None:
-                access= AccessToken.for_user(user)
+                
+                # access= AccessToken.for_user(user)
                 # refresh = RefreshToken.for_user(user)
                 return JsonResponse({"message": "Login successful", 
                                      "access": str(access)}, status=200)

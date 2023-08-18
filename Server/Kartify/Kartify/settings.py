@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+# AUTH_USER_MODEL = 'customuser.CusstomUser'
+
+
 
 # Application definition
 
@@ -43,7 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'corsheaders',
-
+    'customuser'
 ]
 
 MIDDLEWARE = [
@@ -119,7 +122,7 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication'
     ],
 
-    'DEFAULT_PERMISSION_CLASSES' :['rest_framework.permissions.IsAuthenticated']
+    # 'DEFAULT_PERMISSION_CLASSES' :['rest_framework.permissions.IsAuthenticated']
 }
 
 
