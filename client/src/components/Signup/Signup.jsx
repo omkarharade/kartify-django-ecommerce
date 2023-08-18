@@ -4,6 +4,7 @@ import InputArea from '../InputArea';
 import Button from '../utils/Button';
 import { Link, Route, Routes } from 'react-router-dom';
 import Login from '../Login/Login';
+import {Redirect} from 'react-router-dom';
 
 export class Signup extends Component {
 
@@ -42,14 +43,14 @@ export class Signup extends Component {
     }
 
     _validateName(name){
-        if (this._alphaCheck(name) && (name.length <= 10) || name === "") return true;
+        if (this._alphaCheck(name) && (name.length <= 10)) return true;
         else return false;
     }
 
     _validateEmail(email){
         let regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
-        if(regex.test(email) || email === "")  return true;
+        if(regex.test(email))  return true;
         else return false;
     }
 
@@ -81,7 +82,7 @@ export class Signup extends Component {
             firstNameInput: firstName
         })
 
-        if (this._validateName(firstName)) {
+        if (this._validateName(firstName) || (firstName === "")) {
 
             this.setState({
                 firstNameValError: "",
@@ -102,7 +103,7 @@ export class Signup extends Component {
             lastNameInput: lastName
         })
 
-        if (this._validateName(lastName)) {
+        if (this._validateName(lastName) || (lastName === "")) {
 
             this.setState({
                 lastNameValError: "",
@@ -123,7 +124,7 @@ export class Signup extends Component {
             emailInput: email
         })
 
-        if(this._validateEmail(email)){
+        if(this._validateEmail(email) || email === ""){
             this.setState({
                 emailValError: "",
             });
@@ -140,7 +141,7 @@ export class Signup extends Component {
             passwordInput: password
         })
 
-        if(this._validatePassword(password)){
+        if(this._validatePassword(password) || password === ""){
             this.setState({
                 passwordValError: ""
             })
@@ -167,7 +168,7 @@ export class Signup extends Component {
             })
         }
 
-        if(this._validateContact(contact)){
+        if(this._validateContact(contact) || (contact === "")){
             this.setState({
                 contactValError: "",
             })
@@ -200,19 +201,20 @@ export class Signup extends Component {
 
     onSignup(){
 
-        // if(
-        //     !this._validateName(this.state.firstNameInput) ||
-        //     !this._validateName(this.state.lastNameInput) ||
-        //     !this._validateAddress(this.state.emailInput) ||
-        //     !this.state._validatePassword(this.state.passwordInput) ||
-        //     !this._validateContact(this.state.contactInput) || 
-        //     !this._validateAddress(this.state.addressInput)
-        // ){
-
-        // }
-        // else{
+        if(
+            (!this._validateName(this.state.firstNameInput) ||
+            !this._validateName(this.state.lastNameInput) ||
+            !this._validateAddress(this.state.emailInput) ||
+            !this.state._validatePassword(this.state.passwordInput) ||
+            !this._validateContact(this.state.contactInput) || 
+            !this._validateAddress(this.state.addressInput)
+            )
+        ){
             
-        // }
+        }
+        else{
+            
+        }
 
         console.log("function clicked");
     }
@@ -289,8 +291,8 @@ export class Signup extends Component {
                         <p style={{ color: 'red' }}>{addressValError}</p>
                     </div>
 
-                    <div className="input-field">
-                        <Button onSubmit = {this.onSignup} className="enter-credentials-btn" name="Sign Up" />
+                    <div onClick={this.onSignup} className="input-field">
+                        <Button className="enter-credentials-btn" name="Sign Up" />
                     </div>
 
                 </div>

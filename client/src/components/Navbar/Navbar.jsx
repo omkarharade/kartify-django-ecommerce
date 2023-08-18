@@ -24,7 +24,7 @@ class Navbar extends React.Component {
         return <>
             <div className='navbar-primary'>
 
-                <div class="logo-wrapper">
+                <div className="logo-wrapper">
                     <Logo />
                 </div>
                 <div className={`flex-container ${isNavExpanded ? "nav-expanded" : ""}`}>
@@ -41,18 +41,11 @@ class Navbar extends React.Component {
                     <Navlink linkName="Contact Us" />
                     <Navlink linkName="Menu" />
 
-
-
-                    <Routes>
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/signup" element={<Signup />} />
-                    </Routes>
-
                     
                 </div>
 
                 <div
-                        class="hamburger-div"
+                        className="hamburger-div"
                         onClick={() => {
                             this.setState({
                                 isNavExpanded: !isNavExpanded

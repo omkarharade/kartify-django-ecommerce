@@ -4,15 +4,16 @@ import InputArea from '../InputArea';
 import Button from '../utils/Button';
 import { Link, Route, Routes } from 'react-router-dom';
 import Signup from '../Signup/Signup';
+import {Navigate} from "react-router-dom";
 
 export class Login extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      emailInput: 'email',
-      passwordInput: 'password',
-
+      emailInput: '',
+      passwordInput: '',
+      isLoggedIn: localStorage.getItem('isLoggedIn') === 'true',
 
       emailValError: '',
       passwordValError: '',
@@ -24,15 +25,28 @@ export class Login extends Component {
     this.handlePasswordInputChange = this.handlePasswordInputChange.bind(this);
   }
 
+  _validate_email(email){
+    let regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+
+    if (regex.test(email)) {
+      return true;
+    }
+    else return false;
+  }
+
+  _validate_password(password){
+    if(password.length > 0) return true;
+    else return false;
+  }
+
+
   handleEmailInputChange(email) {
 
     this.setState({
       emailInput: email
     })
 
-    let regex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-
-    if (regex.test(email)) {
+    if (this._validate_email(email)) {
       this.setState({
         emailValError: "",
       });
@@ -50,7 +64,7 @@ export class Login extends Component {
     })
 
 
-    if (password.length > 0) {
+    if (this._validate_password(password)) {
       this.setState({
         passwordValError: ""
       })
@@ -62,12 +76,27 @@ export class Login extends Component {
     }
   }
 
+  onLogin({email, password}){
+    
+    if(this._validate_email(email) && 
+      (this._validate_password(password))
+    ){
+      this.setState({isLoggedIn: true});
+      localStorage.setItem('isLoggedIn', 'true')
+    }
+  }
+
 
   render() {
     const email = this.state.emailInput;
     const password = this.state.passwordInput;
     const emailValError = this.state.emailValError;
     const passwordValError = this.state.passwordValError;
+
+
+    if(this.state.isLoggedIn){
+      return <Navigate to="/menu" />
+    }
 
     return (
       <>
@@ -97,8 +126,8 @@ export class Login extends Component {
             <p style={{ color: 'red' }}>{passwordValError}</p>
           </div>
 
-          <div className="input-field">
-            <Button className="w-75 enter-credentials-btn" name="Sign Up" />
+          <div onClick={() => {this.onLogin({email, password})}} className="input-field">
+            <Button className="w-75 enter-credentials-btn" name="Login" />
           </div>
 
         </div>

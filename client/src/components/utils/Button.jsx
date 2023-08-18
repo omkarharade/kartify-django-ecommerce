@@ -7,6 +7,9 @@ class Button extends React.Component {
     }
 
     handleClick(){
+        
+        if(this.props.name === "Login" || this.props.name === "Sign Up") return;
+        console.log("clicked")
         this.props.onSubmit();
     }
     render() {
